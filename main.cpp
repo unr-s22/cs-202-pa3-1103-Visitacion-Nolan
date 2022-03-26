@@ -20,8 +20,10 @@ int main() {
     // test all operators for money class
     Money m1(1, 30);
     Money m2(20, 70);
-    Money m3 = m1 + m2;
-    Money m4 = m1 - m2;
+    Money m3 = m1 + m2; // 22.00
+    Money m4 = m1 - m2; // -19.40
+    Money m5(2, 0);
+    Money m6 = m4 + m5; // -17.40
     // greater than
     if (m1 > m2) {
         std::cout << "m1 greater than m2" << std::endl;
@@ -55,5 +57,6 @@ int main() {
     // adding and subtracting
     std::cout << "m3 = m1 + m2 = " << m3 << std::endl;
     std::cout << "m4 = m1 - m2 = " << m4 << std::endl;
+    std::cout << "m6 = m4 + m5 = " << m6 << std::endl;
     return 0;
 }

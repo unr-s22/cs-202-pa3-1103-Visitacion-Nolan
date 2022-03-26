@@ -51,11 +51,11 @@ bool Money::operator==(const Money &m) {
 
 Money Money::operator+(const Money &m) {
     bool resultNeg;
-    bool dollars_sum, cents_sum;
-    if ((!isNegative && !m.isNegative) || (isNegative && m.isNegative)) {
-        int dollars_sum = dollars + m.dollars;
-        int cents_sum = cents + m.cents;
-        if (cents_sum > 100) {
+    int dollars_sum, cents_sum;
+    if (isNegative == m.isNegative) {
+        dollars_sum = dollars + m.dollars;
+        cents_sum = cents + m.cents;
+        if (cents_sum >= 100) {
             dollars_sum += 1;
             cents_sum -= 100;
         }
@@ -72,14 +72,14 @@ Money Money::operator+(const Money &m) {
 Money Money::operator-(const Money &m) {
     bool resultNeg;
     int dollars_dif, cents_dif;
-    if ((!isNegative && !m.isNegative) || (isNegative && m.isNegative)) {
+    if (isNegative == m.isNegative) {
         dollars_dif = std::abs(dollars - m.dollars);
         cents_dif = std::abs(cents - m.cents);
         resultNeg = dollars < m.dollars || (dollars == m.dollars && cents < m.cents) ? !isNegative : isNegative;
     } else {
         dollars_dif = dollars + m.dollars;
         cents_dif = dollars + m.dollars;
-        if (cents_dif > 100) {
+        if (cents_dif >= 100) {
             dollars_dif += 1;
             cents_dif -= 100;
         }
