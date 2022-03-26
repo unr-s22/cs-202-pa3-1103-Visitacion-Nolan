@@ -15,7 +15,6 @@ int main() {
     Account account(Money s1);
     std::cout << account << std::endl;
     // Make 3 Deposits Into "account" Object
-    account.makeWithdrawal(d1);
 
     
     // test all operators for money class
