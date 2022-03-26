@@ -2,6 +2,7 @@
 // March 25, 2022
 
 #include <iostream>
+#include <sstream>
 #include "Money.h"
 
 //
@@ -18,7 +19,15 @@ Money::Money(int d, int c) {
 //
 
 std::ostream& operator<<(std::ostream &out, const Money &m) {
-    out << "$" << m.dollars << "." << m.cents << std::endl;
+    std::stringstream ss;
+    ss << "$" << m.dollars << ".";
+    if (m.cents < 10) {
+        ss << "0" << m.cents;
+    } else {
+        ss << m.cents;
+    }
+    std::string output = ss.str();
+    std::cout << output;
     return out;
 }
 
