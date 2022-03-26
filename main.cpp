@@ -3,8 +3,20 @@
 
 #include <iostream>
 #include "Money.h"
+#include "Account.h"
 
 int main() {
+    // Starting + Deposit Instances Of Money Object
+    Money s1(300,23);
+    Money d1(200,00);
+    Money d2(300,24);
+    Money d3(501,23);
+    // Create Account Object With Starting Balance $300.23
+    Account account(Money s1);
+    std::cout << account << std::endl;
+    // Make 3 Deposits Into "account" Object
+
+    
     // test all operators for money class
     Money m1(1, 30);
     Money m2(20, 70);
