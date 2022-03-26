@@ -6,8 +6,8 @@
 
 int main() {
     // test all operators for money class
-    Money m1(100, 99);
-    Money m2(100, 99);
+    Money m1(1, 30);
+    Money m2(20, 70);
     Money m3 = m1 + m2;
     Money m4 = m1 - m2;
     // greater than
