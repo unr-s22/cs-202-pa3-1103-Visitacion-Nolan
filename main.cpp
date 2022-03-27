@@ -24,6 +24,7 @@ int main() {
     Money m4 = m1 - m2; // -19.40
     Money m5(2, 0);
     Money m6 = m4 + m5; // -17.40
+    
     // greater than
     if (m1 > m2) {
         std::cout << "m1 greater than m2" << std::endl;
@@ -54,9 +55,23 @@ int main() {
     } else {
         std::cout << "m1 is not less than or equal to m3" << std::endl;
     }
+
     // adding and subtracting
     std::cout << "m3 = m1 + m2 = " << m3 << std::endl;
     std::cout << "m4 = m1 - m2 = " << m4 << std::endl;
     std::cout << "m6 = m4 + m5 = " << m6 << std::endl;
+
+    // expected output:
+    /*
+    m1 is not greater than m2
+    m1 less than m2
+    m1 not equal to m2
+    m1 is not greater than or equal to m3
+    m1 is less than or equal to m3
+    m3 = m1 + m2 = $22.00
+    m4 = m1 - m2 = -$19.40
+    m6 = m4 + m5 = -$17.40
+    */
+
     return 0;
 }
