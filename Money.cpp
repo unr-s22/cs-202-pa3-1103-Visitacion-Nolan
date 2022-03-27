@@ -21,7 +21,7 @@ std::ostream& operator<<(std::ostream &out, const Money &m) {
         ss << m.cents;
     }
     std::string output = ss.str();
-    std::cout << output;
+    out << output;
     return out;
 }
 
