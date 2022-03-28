@@ -17,14 +17,14 @@ class Money {
         Money(int d, int c, bool neg): dollars {d}, cents {c}, isNegative {neg} {};
     public:
         friend std::ostream& operator<<(std::ostream &out, const Money &m);
-        bool operator<(const Money &m);
-        bool operator>(const Money &m);
-        bool operator<=(const Money &m);
-        bool operator>=(const Money &m);
-        bool operator!=(const Money &m);
-        bool operator==(const Money &m);
-        Money operator+(const Money &m);
-        Money operator-(const Money &m);
+        bool operator<(const Money &m) const;
+        bool operator>(const Money &m) const;
+        bool operator<=(const Money &m) const;
+        bool operator>=(const Money &m) const;
+        bool operator!=(const Money &m) const;
+        bool operator==(const Money &m) const;
+        Money operator+(const Money &m) const;
+        Money operator-(const Money &m) const;
 };
 
 #endif // MONEY_H

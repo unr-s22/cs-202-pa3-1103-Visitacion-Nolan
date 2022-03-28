@@ -25,31 +25,31 @@ std::ostream& operator<<(std::ostream &out, const Money &m) {
     return out;
 }
 
-bool Money::operator<(const Money &m) {
+bool Money::operator<(const Money &m) const {
     return dollars < m.dollars || (dollars == m.dollars && cents < m.cents);
 }
 
-bool Money::operator>(const Money &m) {
+bool Money::operator>(const Money &m) const {
     return dollars > m.dollars || (dollars == m.dollars && cents > m.cents);
 }
 
-bool Money::operator<=(const Money &m) {
+bool Money::operator<=(const Money &m) const {
     return dollars < m.dollars || (dollars == m.dollars && m.cents <= m.cents);
 }
 
-bool Money::operator>=(const Money &m) {
+bool Money::operator>=(const Money &m) const {
     return dollars > m.dollars || (dollars == m.dollars && cents >= m.cents);
 }
 
-bool Money::operator!=(const Money &m) {
+bool Money::operator!=(const Money &m) const {
     return dollars != m.dollars || cents != m.cents;
 }
 
-bool Money::operator==(const Money &m) {
+bool Money::operator==(const Money &m) const {
     return dollars == m.dollars && cents == m.cents;
 }
 
-Money Money::operator+(const Money &m) {
+Money Money::operator+(const Money &m) const {
     bool resultNeg;
     int dollars_sum, cents_sum;
     if (isNegative == m.isNegative) {
@@ -69,7 +69,7 @@ Money Money::operator+(const Money &m) {
     return result;
 }
 
-Money Money::operator-(const Money &m) {
+Money Money::operator-(const Money &m) const {
     bool resultNeg;
     int dollars_dif, cents_dif;
     if (isNegative == m.isNegative) {
