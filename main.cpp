@@ -1,4 +1,5 @@
 // testing operators for money class part written by Christian Jovel Serpas
+// testing account class written by Nolan V & editted by Christian Jovel Serpas.
 // March 25 2022
 
 #include <iostream>
@@ -6,6 +7,7 @@
 #include "Account.h"
 
 int main() {
+
     // Starting + Deposit Instances Of Money Object
     Money s1(300,23);
     Money d1(200,00);
@@ -13,21 +15,28 @@ int main() {
     Money d3(501,23);
     Money w1(300,10);
     Money w2(201,34);
+
     // Create Account Object With Starting Balance $300.23
     Account account(s1);
+
     // print the account object
     std::cout << account << std::endl;
+
     // Make 3 Deposits Into "account" Object
     account.makeDeposit(d1);
     account.makeDeposit(d2);
     account.makeDeposit(d3);
+
     // print the account object again
     std::cout << account << std::endl;
+
     // make 2 withdrawals
     account.makeWithdrawal(w1);
     account.makeWithdrawal(w2);
+
     // print the account object a final time
     std::cout << account << std::endl;
+
     // test all operators for money class
     Money m1(1, 30);
     Money m2(20, 70);
