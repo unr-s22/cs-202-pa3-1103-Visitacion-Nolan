@@ -21,6 +21,7 @@ Account::Account(Money &m) {
 std::ostream& operator<<(std::ostream &out, Account &a) {
     std::stringstream ss;
     Money currentBalance = a.getBalance();
+    Money m;
     int numDeposits = a.deposits.size();
     int numWithdrawals = a.withdrawals.size();
     int i;
@@ -31,14 +32,14 @@ std::ostream& operator<<(std::ostream &out, Account &a) {
     ss << "Number of Deposits: " << numDeposits << '\n';
     ss << "--------------------------" << '\n';
     for (i = 0; i < numDeposits; i++) {
-        Money m = a.deposits[i];
+        m = a.deposits[i];
         ss << "(" << i + 1 << ") " << m << '\n';
     }
     ss << "--------------------------" << '\n';
     ss << "Number of Withdrawals: " << numWithdrawals << '\n';
     ss << "--------------------------" << '\n';
     for (i = 0; i < numWithdrawals; i++) {
-        Money m = a.withdrawals[i];
+        m = a.withdrawals[i];
         ss << "(" << i + 1 << ") " << m << '\n';
     }
     std::string output = ss.str();
