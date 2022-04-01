@@ -11,12 +11,23 @@ int main() {
     Money d1(200,00);
     Money d2(300,24);
     Money d3(501,23);
+    Money w1(300,10);
+    Money w2(201,34);
     // Create Account Object With Starting Balance $300.23
-    Account account(Money s1);
+    Account account(s1);
+    // print the account object
     std::cout << account << std::endl;
     // Make 3 Deposits Into "account" Object
-
-    
+    account.makeDeposit(d1);
+    account.makeDeposit(d2);
+    account.makeDeposit(d3);
+    // print the account object again
+    std::cout << account << std::endl;
+    // make 2 withdrawals
+    account.makeWithdrawal(w1);
+    account.makeWithdrawal(w2);
+    // print the account object a final time
+    std::cout << account << std::endl;
     // test all operators for money class
     Money m1(1, 30);
     Money m2(20, 70);

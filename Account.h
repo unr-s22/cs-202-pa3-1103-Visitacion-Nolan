@@ -3,28 +3,28 @@
 
 #ifndef ACCOUNT_H
 #define ACCOUNT_H
+
 #include <iostream>
-#include <sstream>
-#include <numeric>
 #include <vector>
 #include "Money.h"
 
 class Account : public Money {
 private:
-    Money balance;
+    Money initBalance;
+    Money currentBalance;
     std::vector<Money> deposits;
     std::vector<Money> withdrawals;
     bool needsUpdate = false;
 
+private:
+    void updateAccount();
 
 public:
-    Account(Money m);
-    friend std::ostream& operator<<(std::ostream &out, const Account &m);
-
-    void makeDeposit(Money m);
-    void makeWithdrawal(Money m);
-    void updateBalance(std::vector<Money> d, std::vector<Money> w);
-    static void makeString();
+    Account(Money &m);
+    friend std::ostream& operator<<(std::ostream &out, Account &a);
+    void makeDeposit(Money &m);
+    void makeWithdrawal(Money &m);
+    Money getBalance();
 };
 
 

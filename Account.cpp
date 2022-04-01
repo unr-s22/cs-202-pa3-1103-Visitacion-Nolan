@@ -1,58 +1,75 @@
 // Written by Nolan V.
 // March 25, 2022
-#include "Account.h"
+// editted by Christian Jovel Serpas
+// March 31, 2022
 
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include "Account.h"
+#include "Money.h"
 
 // Constructors
 
-Account::Account(Money m) {
-    balance = m;
+Account::Account(Money &m) {
+    initBalance = m;
+    currentBalance = m;
 };
 
 // Operators
 
-std::ostream& operator<<(std::ostream &out, const Account &m) {
-    std::stringstream ss; 
-    
-    ss << "Account Details" << std::endl << "--------------------------" << std::endl << "Current Balance: " << std::endl << m.balance << std::endl;
-    ss << "--------------------------" << std::endl;
-    ss << "Number of Deposits " << m.deposits.size() << std::endl << "--------------------" << std::endl;
-    for (int i = 0; i < m.deposits.size(); i++)
-        {
-            ss << "(" << i << ")" << "$" << m.deposits[i] << std::endl;
-        }
-    ss << "Number of Withdrawals " << m.withdrawals.size() << std::endl << "--------------------" << std::endl;
-    for (int i = 0; i < m.withdrawals.size(); i++)
-        {
-            ss << "(" << i << ")" << "$" << m.withdrawals[i] << std::endl;
-        }
+std::ostream& operator<<(std::ostream &out, Account &a) {
+    std::stringstream ss;
+    Money currentBalance = a.getBalance();
+    int numDeposits = a.deposits.size();
+    int numWithdrawals = a.withdrawals.size();
+    int i;
+    ss << "Account Details" << '\n';
+    ss << "--------------------------" << '\n';
+    ss << "Current Balance: " << currentBalance << '\n';
+    ss << "--------------------------" << '\n';
+    ss << "Number of Deposits: " << numDeposits << '\n';
+    ss << "--------------------------" << '\n';
+    for (i = 0; i < numDeposits; i++) {
+        Money m = a.deposits[i];
+        ss << "(" << i + 1 << ") " << m << '\n';
+    }
+    ss << "--------------------------" << '\n';
+    ss << "Number of Withdrawals: " << numWithdrawals << '\n';
+    ss << "--------------------------" << '\n';
+    for (i = 0; i < numWithdrawals; i++) {
+        Money m = a.withdrawals[i];
+        ss << "(" << i + 1 << ") " << m << '\n';
+    }
     std::string output = ss.str();
-    std::cout << output;
+    out << output;
     return out;
 }
 
 // Methods
 
-void Account::makeDeposit(Money m) {
+void Account::makeDeposit(Money &m) {
     deposits.push_back(m);
     needsUpdate = true;
 };
 
-void Account::makeWithdrawal(Money m) {
+void Account::makeWithdrawal(Money &m) {
     withdrawals.push_back(m);
     needsUpdate = true;
 };
 
-void Account::updateBalance(std::vector<Money> d, std::vector<Money> w) {
-    auto sum_deposits = std::accumulate(d.begin(), d.end(), balance);
-    auto sum_withdrawals = std::accumulate(w.begin(), w.end(), balance);
-        
-        balance = sum_deposits - sum_withdrawals;
-        needsUpdate = false;
-};
-
-void Account::makeString() {
-
-
+Money Account::getBalance() {
+    if (!needsUpdate) {
+        return currentBalance;
+    }
+    Money balanceCalc = initBalance;
+    for (Money m : deposits) {
+        balanceCalc = balanceCalc + m;
+    }
+    for (Money m : withdrawals) {
+        balanceCalc = balanceCalc - m;
+    }
+    currentBalance = balanceCalc;
+    needsUpdate = false;
+    return balanceCalc;
 }
-
